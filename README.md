@@ -6,4 +6,5 @@
 
  Não necessita de dependências, apenas bibliotecas padrão do Python.
 
+ O código não baixa os arquivos em si. Faça o scraping / curl / clone que achar melhor para obter os dados.
 
