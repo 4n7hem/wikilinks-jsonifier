@@ -12,17 +12,18 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level to DEBUG
 
 logger = logging.getLogger(__name__)
 
-#Folder where all of the .gz are located
+#Folder where all of the .gz are located and where the JSONs go
 #Yes, I could and should do a .env . But dotenv is not native and I want to keep the code simple.
-folder = "./input/"
+input_folder = "./input/"
+output_folder = "./output/"
 
 # List all filenames in the folder
-filenames = os.listdir(folder)
+filenames = os.listdir(input_folder)
 
 for filename in filenames:
 
     file = ""
-    file_path = folder + filename
+    file_path = input_folder + filename
     start = time.time()
 
     #Uncompress the file
@@ -86,7 +87,7 @@ for filename in filenames:
     start = time.time()
     #Convert and Save the JSON in the output folder
     output_name = filename.replace(".gz", ".json")
-    with open("./output/"+output_name, 'w') as json_file:
+    with open(output_folder+output_name, 'w') as json_file:
         json_file.write(json.dumps(base_json, indent=4))
     end = time.time()
     logger.debug('Tempo de dump JSON de '+ filename + ': ' + str(round(end-start,4))+ " s")
